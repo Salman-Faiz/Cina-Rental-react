@@ -2,6 +2,7 @@ import Trending from "./assets/icons/trending.svg"
 import newRelease from './assets/icons/newRelease.svg'
 import commingSoon from './assets/icons/commingSoon.svg'
 import favourite from './assets/icons/favourite.svg'
+import watchLater from './assets/icons/watchLater.svg'
 const Sidebar = () => {
   return (
     <aside>
@@ -68,7 +69,7 @@ const Sidebar = () => {
             href='#'
           >
             <img
-              src='./assets/icons/watchLater.svg'
+              src={watchLater}
               width='24'
               height='24'
               alt=''

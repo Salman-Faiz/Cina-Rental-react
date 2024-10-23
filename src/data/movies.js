@@ -43,7 +43,16 @@ const data = [
         "genre": "Action/Adventure/Sci-fi",
         "rating": 5,
         "price": 100
-    }
+    },
+    {
+        "id": crypto.randomUUID(),
+        "cover": "pain-and-gain.jpg",
+        "title": "Pain & Gain",
+        "description": "A trio of bodybuilders in Florida get caught up in an extortion ring and a kidnapping scheme that goes terribly wrong.",
+        "genre": "Action/Comedy/Crime/Drama",
+        "rating": 6,
+        "price": 100
+    },
 ]
 
 function getAllMovies() {
