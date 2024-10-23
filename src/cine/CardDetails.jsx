@@ -2,10 +2,20 @@ import { useContext } from "react"
 import { MovieContext } from "../Context"
 import deleteIcon from '../assets/delete.svg' 
 import checkout from '../assets/icons/checkout.svg' 
+import { getImgUrl } from "../utils/cine-utility"
 
 /* eslint-disable react/prop-types */
 const CardDetails = ({onClose}) => {
     const {cartData,setCartData} = useContext(MovieContext);
+
+    const handleDeleteCart =(event,itemId) =>{
+        event.preventDefault();
+        const filteredItem = cartData.filter(item =>{
+            return item.id !== itemId
+        })
+        setCartData([...filteredItem]);
+
+    }
     
   return (
     <div className='fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm'>
@@ -20,8 +30,11 @@ const CardDetails = ({onClose}) => {
                     <div className='flex items-center gap-4'>
                       <img
                         className='rounded overflow-hidden'
-                        src='/assets/cart-item.png'
+                        src={getImgUrl(item.cover)}
                         alt=''
+                        width={"60"}
+                        height={"60"}
+                        
                       />
                       <div>
                         <h3 className='text-base md:text-2xl font-bold '>{item.title}</h3>
@@ -32,7 +45,8 @@ const CardDetails = ({onClose}) => {
                       </div>
                     </div>
                     <div className='flex justify-between gap-4 items-center'>
-                      <button className='bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white'>
+                      <button className='bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white'
+                      onClick={(e)=>handleDeleteCart(e,item.id)}>
                         <img className='w-5 h-5' src={deleteIcon} alt='' />
                         <span className='max-md:hidden'>Remove</span>
                       </button>
